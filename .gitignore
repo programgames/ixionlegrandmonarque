@@ -50,3 +50,14 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+#Idea pojet files
+.idea/
+public/
+
+#Composer file
+composer
+
+.env
+
+symfony.lock
