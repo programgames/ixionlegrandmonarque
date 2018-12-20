@@ -9,3 +9,6 @@ setup your .env file
 php bin/console doctrine:migrations:migrate
 php bin:console server:start
 ```
+If some problems appears : 
+
+composer fix-recipes
