@@ -1,5 +1,14 @@
 # ixionlegrandmonarque
 
+## Requirements :
+
+php 7.2
+node.js
+yarn
+git
+composer
+docker ( or other database manager )
+
 ## install :
 ```
 git clone https://github.com/programgames/ixionlegrandmonarque.git
