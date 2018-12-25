@@ -12,6 +12,8 @@ class LoLController extends AbstractController
      */
     public function index()
     {
+        $mapName = "";
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLanus?api_key=RGAPI-9976a438-0a4d-4e58-b31f-527b0c4fd9eb');
 
@@ -32,12 +34,28 @@ class LoLController extends AbstractController
 
         $json2 = json_decode($response1, true);
 
+        if ($json2['mapId'] == 10)
+        {
+            $mapName = "Forêt torturée";
+        }
+        if ($json2['mapId'] == 11)
+        {
+            $mapName = "Faille de l'invocateur";
+        }
+        if ($json2['mapId'] == 112)
+        {
+            $mapName = "Aram #MélanieGameplay";
+        }
+        else {
+         $mapName = "Map inconnue";
+        }
         return $this->render('lol/index.html.twig', [
             'controller_name' => 'LoLController',
             'level' => $json['summonerLevel'],
             'id' => $json['id'],
             'gameMode' => $json2['gameMode'],
-            'gameLength' => ($json2['gameLength'] / 60 ) + 3
+            'gameLength' => ($json2['gameLength'] / 60 ) + 3,
+            'mapName' => $mapName,
         ]);
     }
 }
