@@ -7,7 +7,9 @@
     {% endblock %}
 </head>
 <body>
-     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<header>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <!-- Brand -->
         <a class="navbar-brand" href="/">Ixion le grand monarque</a>
         <!-- Links -->
@@ -32,8 +34,9 @@
             </li>
         </ul>
     </nav>
-     {% block body %}
-     {% endblock %}
+</header>
+{% block body %}
+{% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
