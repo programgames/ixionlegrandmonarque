@@ -1,0 +1,5 @@
+services:
+    ilgm.controller.teammiam:
+        class: App\Controller\TeamMiamController
+        arguments:
+            - App\LoLDataGetter\TeamMiamManager
