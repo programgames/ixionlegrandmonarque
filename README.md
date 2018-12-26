@@ -15,6 +15,8 @@ git clone https://github.com/programgames/ixionlegrandmonarque.git
 docker-compose up
 composer install
 setup your .env file
+yarn install
+yarn encore dev
 php bin/console doctrine:migrations:migrate
 php bin:console server:start
 ```
