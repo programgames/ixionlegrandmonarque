@@ -2,11 +2,10 @@
 
 namespace App\LoLDataGetter;
 
-class SummonerInformationManager {
-
-
-    public function urlGetRequestToArray(string $url) : array {
-
+class SummonerInformationManager
+{
+    public function urlGetRequestToArray(string $url) : array
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
 

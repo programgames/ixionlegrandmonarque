@@ -25,8 +25,7 @@ class TeamMiamController extends AbstractController
      */
     public function index()
     {
-
-        return $this->render('lol/TeamMiam.twig',[
+        return $this->render('lol/TeamMiam.twig', [
             'teammiam' => $this->manager->getTeamMiamInformations(),
         ]);
     }
@@ -46,6 +45,4 @@ class TeamMiamController extends AbstractController
     {
         $this->manager = $manager;
     }
-
-
 }
