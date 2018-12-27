@@ -3,7 +3,6 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
@@ -12,6 +11,9 @@ body {
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
+.navbar {
+  margin-bottom: 3rem;
+}
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;

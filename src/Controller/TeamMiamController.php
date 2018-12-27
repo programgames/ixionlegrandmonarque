@@ -28,7 +28,6 @@ class TeamMiamController extends AbstractController
 
         return $this->render('lol/TeamMiam.twig',[
             'teammiam' => $this->manager->getTeamMiamInformations(),
-            'controller_name' => 'LoLController',
         ]);
     }
 

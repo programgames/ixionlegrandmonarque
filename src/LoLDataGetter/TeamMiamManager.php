@@ -7,7 +7,6 @@ class TeamMiamManager {
 
     public function getTeamMiamInformations() : array {
 
-        return [];
         $teamMiam = array (
           'tatas' => $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLanus?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
           'julien' =>  $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/marvin82?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
