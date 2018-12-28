@@ -1,5 +1,13 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
     ilgm.controller.teammiam:
         class: App\Controller\TeamMiamController
         arguments:
             - App\LoLDataGetter\TeamMiamManager
+    App\LolDataGetter\TeamMiamManager:
+        autowire: true;
+

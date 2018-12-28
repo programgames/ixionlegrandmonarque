@@ -4,31 +4,30 @@ namespace App\LoLDataGetter;
 
 class TeamMiamManager
 {
+    /** @var LoLRequestFormer */
+    private $requestFormer;
+
+    /**
+     * TeamMiamManager constructor.
+     * @param LoLRequestFormer $requestFormer
+     */
+    public function __construct(LoLRequestFormer $requestFormer)
+    {
+        $this->requestFormer = $requestFormer;
+    }
+
+
     public function getTeamMiamInformations() : array
     {
         $teamMiam = array(
-          'tatas' => $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLanus?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
-          'julien' =>  $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/marvin82?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
-          'mela' =>  $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLaMeta?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
-          'gwen' =>  $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLaBite?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
-          'ixion' =>  $this->urlGetRequestToArray('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/MiamMiamLeSex?api_key=RGAPI-f8aa8e4d-15be-465a-bed6-22874296460e'),
+          'tatas' => $this->requestFormer->summonerByName('MiamMiamLanus',LoLConstants::REGION_EUW),
+          'julien' => $this->requestFormer->summonerByName('marvin82',LoLConstants::REGION_EUW),
+          'mela' => $this->requestFormer->summonerByName('MiamMiamLaMeta',LoLConstants::REGION_EUW),
+          'gwen' => $this->requestFormer->summonerByName('MiamMiamLaBite',LoLConstants::REGION_EUW),
+          'ixion' => $this->requestFormer->summonerByName('MiamMiamLeSex',LoLConstants::REGION_EUW),
 
         );
         return $teamMiam;
     }
-    public function urlGetRequestToArray(string $url) : array
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $curlResponse = curl_exec($ch);
-        curl_close($ch);
-
-        $response = json_decode($curlResponse, true);
-
-
-        return $response;
-    }
 }
