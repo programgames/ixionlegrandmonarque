@@ -8,102 +8,25 @@
         <div class="container marketing">
 
             <div class="row">
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.julien.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Julien</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.julien.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.julien.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
+
+                {% for key, summoner in teammiam %}
+                    <div class="col-md-4">
+                        <img src="{{  summoner.iconUrl }}" class="summoner-image rounded d-block mx-auto" alt="...">
+                        <h2>{{ key }}</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ summoner.name }}
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Niveaux
+                                <span class="badge badge-primary badge-pill">{{ summoner.summonerLevel }}</span>
+                            </li>
+                        </ul>
+                        <div class="div-button-profile">
+                            <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.tatas.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Matthias</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.tatas.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.tatas.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.ixion.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Ixion</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.ixion.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.ixion.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.mela.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Mélanie</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.mela.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.mela.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.gwen.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Gwen</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.gwen.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.gwen.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-md-4 -->
-                <div class="col-md-4">
-                    <img src="{{ 'http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/' ~ teammiam.rayman.profileIconId  ~ '.png' }}" class="rounded" alt="...">
-                    <h2>Rayman</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ teammiam.rayman.name }}
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Niveaux
-                            <span class="badge badge-primary badge-pill">{{ teammiam.rayman.summonerLevel }}</span>
-                        </li>
-                    </ul>
-                    <div class="div-button-profile">
-                        <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
-                    </div>
-                </div><!-- /.col-md-4 -->
+                {% endfor %}
 
             </div><!-- /.row -->
 

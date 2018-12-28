@@ -23,7 +23,9 @@ class LoLRequestFormer
 
         $url = $url . LoLConstants::SUMMONER_API_V4_BY_NAME . $name . LoLConstants::API_KEY_PREFIX . LoLConstants::API_KEY;
 
-        return $this->urlGetRequestToArray($url);
+        $summoner = $this->urlGetRequestToArray($url);
+        $summoner['iconUrl'] = LoLConstants::DDRAGON_URL_PREFIX . LoLConstants::DDRAGON_VERSION . LoLConstants::DDRAGON_PROFILE_ICON_PATH . $summoner['profileIconId'] . LoLConstants::DDRAGON_PROFILE_ICON_EXT;
+        return $summoner;
     }
 
     public function urlGetRequestToArray(string $url) : array

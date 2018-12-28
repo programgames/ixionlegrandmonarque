@@ -17,7 +17,11 @@ body {
 .navbar {
   margin-bottom: 3rem;
 }
+.summoner-image {
+  max-width:128px;
+  max-height: 128px;
 
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
