@@ -25,6 +25,7 @@ class TeamMiamManager
           'mela' => $this->requestFormer->summonerByName('MiamMiamLaMeta',LoLConstants::REGION_EUW),
           'gwen' => $this->requestFormer->summonerByName('MiamMiamLaBite',LoLConstants::REGION_EUW),
           'ixion' => $this->requestFormer->summonerByName('MiamMiamLeSex',LoLConstants::REGION_EUW),
+          'rayman' => $this->requestFormer->summonerByName('MiamMiamLeSperme',LoLConstants::REGION_EUW),
 
         );
         return $teamMiam;
