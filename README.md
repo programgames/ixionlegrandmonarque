@@ -20,6 +20,10 @@ yarn encore dev
 php bin/console doctrine:migrations:migrate
 php bin:console server:start
 ```
-If some problems appears : 
 
-composer fix-recipes
+debug variables : 
+
+```
+dump($var);
+php bin/console server:dump --format=html > dump.html
+```
