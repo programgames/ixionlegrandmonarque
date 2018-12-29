@@ -23,6 +23,7 @@ php bin:console server:start
 
 debug variables : 
 
+```
 dump($var);
 php bin/console server:dump --format=html > dump.html
-open dump.html with your browser
+```
