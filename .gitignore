@@ -83,3 +83,8 @@ yarn-error.log
 
 # /assets/*
 node_modules/*
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
