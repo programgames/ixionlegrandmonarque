@@ -17,8 +17,15 @@ class TeamMiamManager
     }
 
 
+    /**
+     * @return array
+     * @throws BadRequestException
+     */
     public function getTeamMiamInformations() : array
     {
+        $teamMiam = array();
+
+
         $teamMiam = array(
           'Tatas' => $this->requestFormer->summonerByName('MiamMiamLanus',LoLConstants::REGION_EUW),
           'Julien' => $this->requestFormer->summonerByName('marvin82',LoLConstants::REGION_EUW),

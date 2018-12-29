@@ -11,6 +11,12 @@ class LoLRequestFormer
 {
 
 
+    /**
+     * @param string $name
+     * @param $region
+     * @return Summoner
+     * @throws BadRequestException
+     */
     public function summonerByName(string $name, $region) : Summoner {
 
         $url = "";
@@ -28,7 +34,7 @@ class LoLRequestFormer
 
         $response = $this->urlGetRequestToArray($url);
         if ($response->isError()) {
-            return $response->getData();
+           throw new BadRequestException("Summoner not found");
         }
         $summoner = new Summoner($response);
         $summoner->setIconUrl( LoLConstants::DDRAGON_URL_PREFIX . LoLConstants::DDRAGON_VERSION . LoLConstants::DDRAGON_PROFILE_ICON_PATH . $summoner->getProfileIconId() . LoLConstants::DDRAGON_PROFILE_ICON_EXT);
@@ -49,7 +55,7 @@ class LoLRequestFormer
 
         if(array_key_exists('status',$response)) {
 
-            new RiotApiResponse($response,true);
+           return new RiotApiResponse($response,true);
 
         }
         return new RiotApiResponse($response,false);

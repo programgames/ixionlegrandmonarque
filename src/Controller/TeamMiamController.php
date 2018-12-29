@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\LoLDataGetter\BadRequestException;
 use App\LoLDataGetter\SummonerInformationManager;
 use App\LoLDataGetter\TeamMiamManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TeamMiamController extends AbstractController
@@ -25,8 +28,15 @@ class TeamMiamController extends AbstractController
      */
     public function index()
     {
+        $teammiam = null;
+
+        try {
+            $teammiam = $this->manager->getTeamMiamInformations();
+        } catch (BadRequestException $e) {
+            return $this->render('error/Error500.twig');
+        }
         return $this->render('lol/TeamMiam.twig', [
-            'teammiam' => $this->manager->getTeamMiamInformations(),
+            'teammiam' => $teammiam,
         ]);
     }
 
