@@ -42,7 +42,7 @@ class Summoner
     private $revisionDate;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $summonerId;
 
@@ -55,6 +55,8 @@ class Summoner
      * @ORM\Column(type="string", length=255)
      */
     private $iconUrl;
+
+    private $activateGameData;
 
     /**
      * Summoner constructor.
@@ -69,6 +71,7 @@ class Summoner
         $this->revisionDate= $apiResponse->getData()['revisionDate'];
         $this->summonerId = $apiResponse->getData()['id'];
         $this->accountId = $apiResponse->getData()['accountId'];
+        $this->setSummonerLevel($apiResponse->getData()['summonerLevel']);
     }
 
     public function getId(): ?int
@@ -136,12 +139,12 @@ class Summoner
         return $this;
     }
 
-    public function getSummonerId(): ?int
+    public function getSummonerId(): ?string
     {
         return $this->summonerId;
     }
 
-    public function setSummonerId(int $summonerId): self
+    public function setSummonerId(string $summonerId): self
     {
         $this->summonerId = $summonerId;
 
@@ -174,5 +177,21 @@ class Summoner
     public function setIconUrl($iconUrl): void
     {
         $this->iconUrl = $iconUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivateGameData()
+    {
+        return $this->activateGameData;
+    }
+
+    /**
+     * @param mixed $activateGameData
+     */
+    public function setActivateGameData($activateGameData): void
+    {
+        $this->activateGameData = $activateGameData;
     }
 }

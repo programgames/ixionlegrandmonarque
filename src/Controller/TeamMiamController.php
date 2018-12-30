@@ -36,7 +36,7 @@ class TeamMiamController extends AbstractController
             return $this->render('error/Error500.twig');
         }
         return $this->render('lol/TeamMiam.twig', [
-            'teammiam' => $teammiam,
+            'teamMiam' => $teammiam,
         ]);
     }
 

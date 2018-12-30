@@ -9,21 +9,28 @@
 
             <div class="row">
 
-                {% for key, summoner in teammiam %}
+                {% for key, summonerMiamInfo in teamMiam %}
                     <div class="col-md-4">
-                        <img src="{{  summoner.iconUrl }}" class="summoner-image rounded d-block mx-auto" alt="...">
+                        <img src="{{  summonerMiamInfo.summonerInfo.iconUrl }}" class="summoner-image rounded d-block mx-auto" alt="...">
                         <h2>{{ key }}</h2>
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ summoner.name }}
+                                {{ summonerMiamInfo.summonerInfo.name }}
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Niveaux
-                                <span class="badge badge-primary badge-pill">{{ summoner.summonerLevel }}</span>
+                                <span class="badge badge-primary badge-pill">{{ summonerMiamInfo.summonerInfo.summonerLevel }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {% if summonerMiamInfo.gameInfo %}
+                              <p>En game : Oui</p>
+                                {% else %}
+                                    <p>En game : Non</p>
+                                {% endif %}
                             </li>
                         </ul>
                         <div class="div-button-profile">
-                            <p class="text-center"><a class="btn btn-secondary btn-block" href="#" role="button">Voir le profil &raquo;</a></p>
+                            <p class="text-center"><a class="btn btn-secondary btn-block" href="{{ 'http://euw.op.gg/summoner/userName=' ~ summonerMiamInfo.summonerInfo.name }}" role="button">Voir le profil &raquo;</a></p>
                         </div>
                     </div>
                 {% endfor %}
