@@ -49,11 +49,6 @@ class CurrentGameInfo
     private $gameType;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BannedChampion", mappedBy="currentGameInfo", orphanRemoval=true)
-     */
-    private $bannedChampions;
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\Observer", inversedBy="currentGameInfo", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -73,6 +68,11 @@ class CurrentGameInfo
      * @ORM\Column(type="integer")
      */
     private $gameQueueConfigId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BannedChampion", mappedBy="currentGameInfo", orphanRemoval=true)
+     */
+    private $bannedChampions;
 
     public function __construct(RiotApiResponse $apiResponse)
     {

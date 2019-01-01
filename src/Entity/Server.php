@@ -27,7 +27,6 @@ class Server
      */
     private $version;
 
-
     public function getId(): ?int
     {
         return $this->id;

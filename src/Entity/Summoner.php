@@ -60,6 +60,7 @@ class Summoner
 
     /**
      * Summoner constructor.
+     *
      * @param RiotApiResponse $apiResponse
      */
     public function __construct(RiotApiResponse $apiResponse)
@@ -68,7 +69,7 @@ class Summoner
         $this->profileIconId = $apiResponse->getData()['profileIconId'];
         $this->name = $apiResponse->getData()['name'];
         $this->puuid = $apiResponse->getData()['puuid'];
-        $this->revisionDate= $apiResponse->getData()['revisionDate'];
+        $this->revisionDate = $apiResponse->getData()['revisionDate'];
         $this->summonerId = $apiResponse->getData()['id'];
         $this->accountId = $apiResponse->getData()['accountId'];
         $this->setSummonerLevel($apiResponse->getData()['summonerLevel']);

@@ -11,6 +11,7 @@ class TeamMiamManager
 
     /**
      * TeamMiamManager constructor.
+     *
      * @param LoLRequestFormer $requestFormer
      */
     public function __construct(LoLRequestFormer $requestFormer)
@@ -18,35 +19,34 @@ class TeamMiamManager
         $this->requestFormer = $requestFormer;
     }
 
-
     /**
      * @return array
+     *
      * @throws BadRequestException
      */
-    public function getTeamMiamInformations() : array
+    public function getTeamMiamInformations(): array
     {
-        /** @var $teamMiam [][] */
-        $teamMiam = array(
-            'Tatas' => array (
-              'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLanus',LoLConstants::REGION_EUW),
-            ),
-            'Julien' => array(
-                'summonerInfo' => $this->requestFormer->summonerByName('marvin82',LoLConstants::REGION_EUW),
-            ),
-            'Melanie' => array(
-                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLaMeta',LoLConstants::REGION_EUW),
-            ),
-            'Gwen' => array(
-                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLaBite',LoLConstants::REGION_EUW),
-            ),
-            'Ixion' => array(
-                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLeSex',LoLConstants::REGION_EUW),
-            ),
-            'Rayman' => array(
-                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLeSperme',LoLConstants::REGION_EUW),
-            )
-        );
-
+        /** @var $teamMiam Summoner[][] */
+        $teamMiam = [
+            'Tatas' => [
+              'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLanus', LoLConstants::REGION_EUW),
+            ],
+            'Julien' => [
+                'summonerInfo' => $this->requestFormer->summonerByName('marvin82', LoLConstants::REGION_EUW),
+            ],
+            'Melanie' => [
+                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLaMeta', LoLConstants::REGION_EUW),
+            ],
+            'Gwen' => [
+                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLaBite', LoLConstants::REGION_EUW),
+            ],
+            'Ixion' => [
+                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLeSex', LoLConstants::REGION_EUW),
+            ],
+            'Rayman' => [
+                'summonerInfo' => $this->requestFormer->summonerByName('MiamMiamLeSperme', LoLConstants::REGION_EUW),
+            ],
+        ];
 
         try {
             $teamMiam['Tatas']['gameInfo'] = $this->requestFormer->gameBySummonerId($teamMiam['Tatas']['summonerInfo']->getSummonerId(), LoLConstants::REGION_EUW);
@@ -81,5 +81,4 @@ class TeamMiamManager
 
         return $teamMiam;
     }
-
 }

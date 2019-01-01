@@ -3,28 +3,29 @@
  * Created by PhpStorm.
  * User: Julien
  * Date: 29/12/2018
- * Time: 16:41
+ * Time: 16:41.
  */
 
 namespace App\Entity;
 
-
 class RiotApiResponse
 {
-    /** @var boolean */
-    private $error;
-
+    /** @var [] */
     private $data;
+
+    /** @var int */
+    private $httpCode;
 
     /**
      * RiotApiResponse constructor.
+     *
      * @param $data
-     * @param $error
+     * @param int $httpCode
      */
-    public function __construct($data,$error)
+    public function __construct($data, int $httpCode)
     {
         $this->data = $data;
-        $this->error = $error;
+        $this->setHttpCode($httpCode);
     }
 
     /**
@@ -44,20 +45,18 @@ class RiotApiResponse
     }
 
     /**
-     * @return bool
+     * @return int
      */
-    public function isError(): bool
+    public function getHttpCode(): int
     {
-        return $this->error;
+        return $this->httpCode;
     }
 
     /**
-     * @param bool $error
+     * @param int $httpCode
      */
-    public function setError(bool $error): void
+    public function setHttpCode(int $httpCode): void
     {
-        $this->error = $error;
+        $this->httpCode = $httpCode;
     }
-
-
 }
