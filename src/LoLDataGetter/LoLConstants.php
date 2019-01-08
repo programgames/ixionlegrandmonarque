@@ -4,7 +4,7 @@ namespace App\LoLDataGetter;
 
 class LoLConstants
 {
-    public const API_KEY = 'RGAPI-6fd8ec69-c965-44bf-9ef4-8bbcbe998c71';
+    public const API_KEY = 'RGAPI-63cc6ce4-8a54-44ad-8908-d3801df6418a';
 
     public const REGION_EUW = 'euw1.api.riotgames.com/';
 
