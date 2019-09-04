@@ -29,7 +29,7 @@ class LoLRequestFormer
         $url = $url.LoLConstants::SUMMONER_API_V4_BY_NAME.$name.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
 
         $response = $this->urlGetRequestToArray($url);
-        if ($response->getHttpCode() == 404) {
+        if (404 == $response->getHttpCode()) {
             throw new BadRequestException('Summoner not found');
         }
         $summoner = new Summoner($response);
