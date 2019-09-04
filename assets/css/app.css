@@ -4,7 +4,7 @@
 
 body {
   padding-bottom: 3rem;
-  background-image: radial-gradient(circle, #269e2b, #1e8322, #166919, #0e5111, #073908);
+  /*background-image: radial-gradient(circle, #269e2b, #1e8322, #166919, #0e5111, #073908);*/
 }
 
 
@@ -16,7 +16,7 @@ body {
 }
 .navbar {
   margin-bottom: 3rem;
-  background-image: radial-gradient(circle, #269e2b, #1e8322, #166919, #0e5111, #073908);
+  /*background-image: radial-gradient(circle, #269e2b, #1e8322, #166919, #0e5111, #073908);*/
 }
 .summoner-image {
   max-width:128px;

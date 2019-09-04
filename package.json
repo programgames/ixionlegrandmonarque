@@ -9,7 +9,8 @@
     "webpack-notifier": "^1.6.0"
   },
   "dependencies": {
-    "encore": "^0.0.30-beta"
+    "encore": "^0.0.30-beta",
+    "jstree": "^3.3.7"
   },
   "scripts": {
     "dev-server": "encore dev-server",
