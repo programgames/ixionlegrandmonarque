@@ -10,4 +10,3 @@ services:
             - App\LoLDataGetter\TeamMiamManager
     App\LoLDataGetter\TeamMiamManager:
         autowire: true;
-

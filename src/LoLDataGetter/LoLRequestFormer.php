@@ -24,6 +24,9 @@ class LoLRequestFormer
             case LoLConstants::REGION_EUW:
                 $url = $url.LoLConstants::REGION_EUW;
                 break;
+            case LoLConstants::REGION_TR:
+                $url = $url.LoLConstants::REGION_TR;
+                break;
         }
 
         $url = $url.LoLConstants::SUMMONER_API_V4_BY_NAME.$name.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
@@ -95,5 +98,24 @@ class LoLRequestFormer
         $currentGameInfo = new CurrentGameInfo($response);
 
         return $currentGameInfo;
+    }
+
+    public function getCurrentPatch()
+    {
+        $current_patch = file_get_contents('https://ddragon.leagueoflegends.com/realms/na.json');
+        $current_patch = json_decode($current_patch);
+        $current_patch = $current_patch->n->item;
+
+        return $current_patch;
+    }
+
+    public function getChampions()
+    {
+        $url = LoLConstants::DDRAGON_URL_PREFIX.$this->getCurrentPatch().LoLConstants::DDRAGON_END;
+
+        $champions = $this->urlGetRequestToArray($url);
+        $champions = $champions->getData()["data"];
+
+        return $champions;
     }
 }

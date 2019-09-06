@@ -72,7 +72,7 @@ class Summoner
         $this->revisionDate = $apiResponse->getData()['revisionDate'];
         $this->summonerId = $apiResponse->getData()['id'];
         $this->accountId = $apiResponse->getData()['accountId'];
-        $this->setSummonerLevel($apiResponse->getData()['summonerLevel']);
+        $this->summonerLevel = $apiResponse->getData()['summonerLevel'];
     }
 
     public function getId(): ?int
