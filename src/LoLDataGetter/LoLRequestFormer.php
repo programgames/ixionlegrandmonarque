@@ -33,9 +33,9 @@ class LoLRequestFormer
         return new RiotApiResponse($bodyAsArray, $httpCode);
     }
 
-    public function checkRegion($region): bool
+    public function checkServicePlatform($platform): bool
     {
-        switch ($region) {
+        switch ($$platform) {
             case LoLConstants::SERVICE_PLATFORM_EUW:
                 return true;
             case LoLConstants::SERVICE_PLATFORM_AMERICAS:

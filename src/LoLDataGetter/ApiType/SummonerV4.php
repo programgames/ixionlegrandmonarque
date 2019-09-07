@@ -53,7 +53,7 @@ class SummonerV4 implements APIType
      */
     public function summonerByName(string $name, $region): Summoner
     {
-        if (!$this->lolRequestFormer->checkRegion($region)) {
+        if (!$this->lolRequestFormer->checkServicePlatform($region)) {
             throw new BadRegionException('Bad region provided');
         }
         $url = $region;
