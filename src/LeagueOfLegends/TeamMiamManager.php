@@ -1,22 +1,25 @@
 <?php
 
-namespace App\LoLDataGetter;
+namespace App\LeagueOfLegends;
 
 use App\Entity\Summoner;
+use App\LoLDataGetter\ApiType\SummonerV4;
+use App\LoLDataGetter\Exception\GameNotFoundException;
+use App\LoLDataGetter\LoLConstants;
 
 class TeamMiamManager
 {
-    /** @var LoLRequestFormer */
-    private $requestFormer;
+    /** @var SummonerV4 */
+    private $summonerV4;
 
     /**
      * TeamMiamManager constructor.
      *
-     * @param LoLRequestFormer $requestFormer
+     * @param SummonerV4 $summonerV4
      */
-    public function __construct(LoLRequestFormer $requestFormer)
+    public function __construct(SummonerV4 $summonerV4)
     {
-        $this->requestFormer = $requestFormer;
+        $this->summonerV4 = $summonerV4;
     }
 
     /**
@@ -29,7 +32,7 @@ class TeamMiamManager
         /** @var $teamMiam Summoner[][] */
         $teamMiam = [
             'Tatas' => [
-              'summonerInfo' => $this->requestFormer->summonerByName('CHECHOUALOL', LoLConstants::REGION_EUW),
+              'summonerInfo' => $this->summonerV4->summonerByName('CHECHOUALOL', LoLConstants::SERVICE_PLATFORM_EUW),
             ],
 //            'Julien' => [
 //                'summonerInfo' => $this->requestFormer->summonerByName('marvin82', LoLConstants::REGION_EUW),
@@ -49,7 +52,7 @@ class TeamMiamManager
         ];
 
         try {
-            $teamMiam['Tatas']['gameInfo'] = $this->requestFormer->gameBySummonerId($teamMiam['Tatas']['summonerInfo']->getSummonerId(), LoLConstants::REGION_EUW);
+            $teamMiam['Tatas']['gameInfo'] = $this->summonerV4->gameBySummonerId($teamMiam['Tatas']['summonerInfo']->getSummonerId(), LoLConstants::SERVICE_PLATFORM_EUW);
         } catch (GameNotFoundException $e) {
             $teamMiam['Tatas']['gameInfo'] = null;
         }

@@ -4,10 +4,11 @@ services:
         autoconfigure: true
         public: false
 
-    ilgm.controller.teammiam:
-        class: App\Controller\TeamMiamController
-        arguments:
-            - App\LoLDataGetter\TeamMiamManager
-    App\LoLDataGetter\TeamMiamManager:
+    App\Controller\TeamMiamController:
         autowire: true;
 
+    App\LeagueOfLegends\TeamMiamManager:
+        autowire: true;
+
+    App\LoLDataGetter\ApiType\SummonerV4:
+        autowire: true;

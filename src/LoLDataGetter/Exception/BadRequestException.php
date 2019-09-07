@@ -6,7 +6,7 @@
  * Time: 22:37.
  */
 
-namespace App\LoLDataGetter;
+namespace App\LoLDataGetter\Exception;
 
 use Exception;
 

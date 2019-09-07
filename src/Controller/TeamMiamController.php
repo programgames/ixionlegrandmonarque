@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\LoLDataGetter\BadRequestException;
-use App\LoLDataGetter\TeamMiamManager;
+use App\LeagueOfLegends\TeamMiamManager;
+use App\LoLDataGetter\Exception\BadRequestException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
