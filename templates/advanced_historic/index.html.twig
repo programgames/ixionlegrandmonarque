@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdvancedHistoricController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <button class="btn calculate">{{ button_label|default('Calculer temps de jeu') }}</button>
+</div>
+
+
+    <h3>Invocateur</h3>
+    <p class="summoner-name">?</p>
+    <h3>Temps de jeu en heure</h3>
+    <p class="time-played-hour">?</p>
+    <h3>Temps de jeu en jours</h3>
+    <p class="time-played-days">?</p>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('calculatehistoric') }}
+    {% endblock %}
+{% endblock %}
