@@ -71,7 +71,6 @@ class Summoner
         $this->puuid = $apiResponse->getData()['puuid'];
         $this->revisionDate = $apiResponse->getData()['revisionDate'];
         $this->summonerId = $apiResponse->getData()['id'];
-        $this->accountId = $apiResponse->getData()['accountId'];
         $this->summonerLevel = $apiResponse->getData()['summonerLevel'];
     }
 

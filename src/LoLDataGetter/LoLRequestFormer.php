@@ -2,50 +2,14 @@
 
 namespace App\LoLDataGetter;
 
-use App\Entity\CurrentGameInfo;
 use App\Entity\RiotApiResponse;
-use App\Entity\Summoner;
 
 class LoLRequestFormer
 {
-    /**
-     * @param string $name
-     * @param $region
-     *
-     * @return Summoner
-     *
-     * @throws BadRequestException
-     */
-    public function summonerByName(string $name, $region): Summoner
+    public function urlGetRequestToArray(string $url): RiotApiResponse
     {
-        $url = LoLConstants::PROTOCOL;
-
-        switch ($region) {
-            case LoLConstants::REGION_EUW:
-                $url = $url.LoLConstants::REGION_EUW;
-                break;
-            case LoLConstants::REGION_TR:
-                $url = $url.LoLConstants::REGION_TR;
-                break;
-        }
-
-        $url = $url.LoLConstants::SUMMONER_API_V4_BY_NAME.$name.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
-
-        $response = $this->urlGetRequestToArray($url);
-        if (404 == $response->getHttpCode()) {
-            throw new BadRequestException('Summoner not found');
-        }
-        $summoner = new Summoner($response);
-        $summoner->setIconUrl(
-            LoLConstants::DDRAGON_URL_PREFIX.LoLConstants::DDRAGON_VERSION.LoLConstants::DDRAGON_PROFILE_ICON_PATH.$summoner->getProfileIconId(
-            ).LoLConstants::DDRAGON_PROFILE_ICON_EXT
-        );
-
-        return $summoner;
-    }
-
-    private function urlGetRequestToArray(string $url): RiotApiResponse
-    {
+        $url = LoLConstants::PROTOCOL.$url;
+        $url = $url.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
 
@@ -69,53 +33,41 @@ class LoLRequestFormer
         return new RiotApiResponse($bodyAsArray, $httpCode);
     }
 
-    /**
-     * @param string $summonerId
-     * @param string $region
-     *
-     * @return CurrentGameInfo
-     *
-     * @throws BadRequestException
-     * @throws GameNotFoundException
-     */
-    public function gameBySummonerId(string $summonerId, string $region): CurrentGameInfo
+    public function checkRegion($region): bool
     {
-        $url = LoLConstants::PROTOCOL;
-
         switch ($region) {
-            case LoLConstants::REGION_EUW:
-                $url = $url.LoLConstants::REGION_EUW;
-                break;
+            case LoLConstants::SERVICE_PLATFORM_EUW:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_AMERICAS:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_ASIA:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_BR1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_JP1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_KR:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_LA1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_LA2:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_NA:
+                return true;
+            case  LoLConstants::SERVICE_PLATFORM_NA1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_EUROPE:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_OC1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_PBE1:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_RU:
+                return true;
+            case LoLConstants::SERVICE_PLATFORM_TR1:
+                return true;
+            default:
+                return false;
         }
-        $url = $url.LoLConstants::SPECTATOR_API_V4_BY_SUMMONER_ID.$summonerId.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
-
-        $response = $this->urlGetRequestToArray($url);
-        if (404 == $response->getHttpCode()) {
-            throw new GameNotFoundException('GameNotFound not found');
-        } elseif (200 != $response->getHttpCode()) {
-            throw new BadRequestException('Bad request');
-        }
-        $currentGameInfo = new CurrentGameInfo($response);
-
-        return $currentGameInfo;
-    }
-
-    public function getCurrentPatch()
-    {
-        $current_patch = file_get_contents('https://ddragon.leagueoflegends.com/realms/na.json');
-        $current_patch = json_decode($current_patch);
-        $current_patch = $current_patch->n->item;
-
-        return $current_patch;
-    }
-
-    public function getChampions()
-    {
-        $url = LoLConstants::DDRAGON_URL_PREFIX.$this->getCurrentPatch().LoLConstants::DDRAGON_END;
-
-        $champions = $this->urlGetRequestToArray($url);
-        $champions = $champions->getData()["data"];
-
-        return $champions;
     }
 }

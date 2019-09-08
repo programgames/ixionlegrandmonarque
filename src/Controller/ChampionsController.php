@@ -2,23 +2,23 @@
 
 namespace App\Controller;
 
+use App\LoLDataGetter\ApiType\DDragon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\LoLDataGetter\LoLRequestFormer;
 
 /**
  * @Route("/champions")
  */
 class ChampionsController extends AbstractController
 {
-    private $champions;
+    private $ddragon;
 
     /**
-     * @param LoLRequestFormer $champions
+     * @param DDragon $ddragon
      */
-    public function __construct(LoLRequestFormer $champions)
+    public function __construct(DDragon $ddragon)
     {
-        $this->champions = $champions;
+        $this->ddragon = $ddragon;
     }
 
     /**
@@ -26,7 +26,8 @@ class ChampionsController extends AbstractController
      */
     public function index()
     {
-        $champions = $this->champions->getChampions();
+        $champions = $this->ddragon->getChampions();
+
         return $this->render('lol/Champions.twig', [
             'champions' => $champions,
         ]);
