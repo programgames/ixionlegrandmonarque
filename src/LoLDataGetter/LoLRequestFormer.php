@@ -35,7 +35,7 @@ class LoLRequestFormer
 
     public function checkServicePlatform($platform): bool
     {
-        switch ($$platform) {
+        switch ($platform) {
             case LoLConstants::SERVICE_PLATFORM_EUW:
                 return true;
             case LoLConstants::SERVICE_PLATFORM_AMERICAS:

@@ -12,8 +12,6 @@ use App\LoLDataGetter\LoLRequestFormer;
 
 class SummonerV4 implements APIType
 {
-    public const SUMMONER_V4_BY_NAME = 'lol/summoner/v4/summoners/by-name/';
-
     /** @var LoLRequestFormer */
     private $lolRequestFormer;
 
@@ -60,7 +58,7 @@ class SummonerV4 implements APIType
 
         $name = $this->formateSummonerName($name);
 
-        $url = $url.$this::SUMMONER_V4_BY_NAME.$name;
+        $url = $url.LoLConstants::SUMMONER_V4_BY_NAME.'/'.$name;
 
         $response = $this->lolRequestFormer->urlGetRequestToArray($url);
         if (404 == $response->getHttpCode()) {
@@ -86,14 +84,12 @@ class SummonerV4 implements APIType
      */
     public function gameBySummonerId(string $summonerId, string $region): CurrentGameInfo
     {
-        $url = LoLConstants::PROTOCOL;
-
         switch ($region) {
             case LoLConstants::SERVICE_PLATFORM_EUW:
-                $url = $url.LoLConstants::SERVICE_PLATFORM_EUW;
+                $url = LoLConstants::SERVICE_PLATFORM_EUW;
                 break;
         }
-        $url = $url.LoLConstants::SPECTATOR_API_V4_BY_SUMMONER_ID.$summonerId.LoLConstants::API_KEY_PREFIX.LoLConstants::API_KEY;
+        $url = $url.LoLConstants::SPECTATOR_API_V4_BY_SUMMONER_ID.'/'.$summonerId;
 
         $response = $this->lolRequestFormer->urlGetRequestToArray($url);
         if (404 == $response->getHttpCode()) {

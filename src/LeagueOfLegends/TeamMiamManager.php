@@ -4,6 +4,8 @@ namespace App\LeagueOfLegends;
 
 use App\Entity\Summoner;
 use App\LoLDataGetter\ApiType\SummonerV4;
+use App\LoLDataGetter\Exception\BadRegionException;
+use App\LoLDataGetter\Exception\BadRequestException;
 use App\LoLDataGetter\Exception\GameNotFoundException;
 use App\LoLDataGetter\LoLConstants;
 
@@ -26,6 +28,7 @@ class TeamMiamManager
      * @return array
      *
      * @throws BadRequestException
+     * @throws BadRegionException
      */
     public function getTeamMiamInformations(): array
     {
