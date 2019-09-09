@@ -4,7 +4,7 @@ namespace App\LoLDataGetter;
 
 class LoLConstants
 {
-    public const API_KEY = 'RGAPI-2eca636e-27cb-4a68-b127-8dcd4d98cb35';
+    public const API_KEY = 'RGAPI-6d1726cb-e3f4-4195-ad95-2128c4d68294';
 
     public const SERVICE_PLATFORM_BR1 = 'br1.api.riotgames.com';
     public const SERVICE_PLATFORM_EUW = 'euw1.api.riotgames.com';
@@ -33,5 +33,6 @@ class LoLConstants
     public const DDRAGON_PROFILE_ICON_PATH = '/img/profileicon/';
     public const DDRAGON_PROFILE_ICON_EXT = '.png';
 
-    public const DDRAGON_END = '/data/fr_FR/champion.json';
+    public const DDRAGON_DATA_FR = '/data/fr_FR';
+    public const DDRAGON_JSON = '.json';
 }

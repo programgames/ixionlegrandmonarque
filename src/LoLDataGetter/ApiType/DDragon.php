@@ -2,6 +2,7 @@
 
 namespace App\LoLDataGetter\ApiType;
 
+use App\Entity\Champion;
 use App\LoLDataGetter\LoLConstants;
 use App\LoLDataGetter\LoLRequestFormer;
 
@@ -45,11 +46,21 @@ class DDragon implements APIType
 
     public function getChampions()
     {
-        $url = LoLConstants::DDRAGON_URL_PREFIX.'cdn/'.$this->getCurrentPatch().LoLConstants::DDRAGON_END;
+        $url = LoLConstants::DDRAGON_URL_PREFIX.'cdn/'.$this->getCurrentPatch().LoLConstants::DDRAGON_DATA_FR.'/champion'.LoLConstants::DDRAGON_JSON;
 
-        $champions = $this->lolRequestFormer->urlGetRequestToArray($url);
-        $champions = $champions->getData()['data'];
+        $championsList = $this->lolRequestFormer->urlGetRequestToArray($url);
+        $championsList = $championsList->getData()['data'];
 
-        return $champions;
+        return $championsList;
+    }
+
+    public function getChampion($name)
+    {
+        $url = LoLConstants::DDRAGON_URL_PREFIX.'cdn/'.$this->getCurrentPatch().LoLConstants::DDRAGON_DATA_FR.'/champion/'.$name.LoLConstants::DDRAGON_JSON;
+
+        $response = $this->lolRequestFormer->urlGetRequestToArray($url);
+        $champion = new Champion($response);
+
+        return $champion;
     }
 }

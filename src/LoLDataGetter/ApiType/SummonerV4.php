@@ -12,7 +12,7 @@ use App\LoLDataGetter\LoLRequestFormer;
 
 class SummonerV4 implements APIType
 {
-    public const SUMMONER_V4_BY_NAME = 'lol/summoner/v4/summoners/by-name/';
+    public const SUMMONER_V4_BY_NAME = '/lol/summoner/v4/summoners/by-name/';
 
     /** @var LoLRequestFormer */
     private $lolRequestFormer;

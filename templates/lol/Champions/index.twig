@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for key, name in championsList %}
+        <h5><a href="{{ path('ixion_champions_view', {'name': key}) }}">{{ key }}</a></h5>
+    {% endfor %}
+{% endblock %}

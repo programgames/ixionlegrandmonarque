@@ -22,7 +22,7 @@ class TeamMiamController extends AbstractController
     }
 
     /**
-     * @Route("/teammiam", name="Team Miam")
+     * @Route("/teammiam", name="ixion_teammiam_index")
      */
     public function index()
     {

@@ -26,10 +26,22 @@ class ChampionsController extends AbstractController
      */
     public function index()
     {
-        $champions = $this->ddragon->getChampions();
+        $championsList = $this->ddragon->getChampions();
 
-        return $this->render('lol/Champions.twig', [
-            'champions' => $champions,
+        return $this->render('lol/champions/index.twig', [
+            'championsList' => $championsList,
+        ]);
+    }
+
+    /**
+     * @Route("/{name}", name="ixion_champions_view", methods={"GET"})
+     */
+    public function view($name)
+    {
+        $champion = $this->ddragon->getChampion($name);
+
+        return $this->render('lol/champions/view.twig', [
+            'champion' => $champion,
         ]);
     }
 }
