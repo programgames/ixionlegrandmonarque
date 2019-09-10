@@ -27,9 +27,9 @@ class Champion
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=2550)
      */
-    private $splashart;
+    private $blurb;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,16 +39,14 @@ class Champion
     /**
      * Summoner constructor.
      *
-     * @param RiotApiResponse $apiResponse
+     * @param array $data
      */
-    public function __construct(RiotApiResponse $apiResponse)
+    public function __construct(array $data)
     {
-        $jsonChampion = array_shift($apiResponse->getData()['data']);
-        $jsonChampionImage = $jsonChampion['image'];
-        $this->name = $jsonChampion['name'];
-        $this->title = $jsonChampion['title'];
-        $this->splashart = $jsonChampion['image']['full'];
-        $this->image = $jsonChampion['image']['sprite'];
+        $this->name = $data['name'];
+        $this->blurb = $data['blurb'];
+        $this->title = $data['title'];
+        $this->image = $data['image']['full'];
     }
 
     public function getId(): ?int
@@ -87,17 +85,17 @@ class Champion
     /**
      * @return mixed
      */
-    public function getSplashart()
+    public function getBlurb()
     {
-        return $this->splashart;
+        return $this->blurb;
     }
 
     /**
-     * @param mixed $splashart
+     * @param mixed $blurb
      */
-    public function setSplashart($splashart): void
+    public function setBlurb($blurb): void
     {
-        $this->splashart = $splashart;
+        $this->blurb = $blurb;
     }
 
     /**

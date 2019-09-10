@@ -44,12 +44,22 @@ class DDragon implements APIType
         return $current_patch;
     }
 
+    /**
+     * @return Champion[]
+     */
     public function getChampions()
     {
         $url = LoLConstants::DDRAGON_URL_PREFIX.'cdn/'.$this->getCurrentPatch().LoLConstants::DDRAGON_DATA_FR.'/champion'.LoLConstants::DDRAGON_JSON;
 
-        $championsList = $this->lolRequestFormer->urlGetRequestToArray($url);
-        $championsList = $championsList->getData()['data'];
+        $champions = $this->lolRequestFormer->urlGetRequestToArray($url);
+        $champions = $champions->getData()['data'];
+
+        $championsList = [];
+
+        foreach ($champions as $c) {
+            $champion = new Champion($c);
+            array_push($championsList, $champion);
+        }
 
         return $championsList;
     }

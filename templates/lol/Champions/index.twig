@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for key, name in championsList %}
-        <h5><a href="{{ path('ixion_champions_view', {'name': key}) }}">{{ key }}</a></h5>
+    {{ dump(champions) }}
+    {% for key, champ in champions %}
+        <h5><a href="{{ path('ixion_champions_view', {'name': key}) }}">{{ champ.name }}<img src="{{ 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' ~ champ.image}}"></a></h5>
     {% endfor %}
 {% endblock %}
