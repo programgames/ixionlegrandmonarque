@@ -30,15 +30,6 @@ class ChampionsController extends AbstractController
     {
         $champions = $this->ddragon->getChampions();
 
-        /**
-         * @var $champions Champion[]
-         */
-        foreach ($champions as $c) {
-            $loading = substr_replace($c->getImage(), '', -4);
-            $loading  = str_replace(array( '\'', ' '), '', $loading) . '_0.jpg' ;
-            $c->setImage($loading);
-        }
-
         return $this->render('lol/Champions/index.twig', [
             'champions' => $champions,
         ]);
