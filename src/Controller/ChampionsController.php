@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Champion;
 use App\LoLDataGetter\ApiType\DDragon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,16 @@ class ChampionsController extends AbstractController
     {
         $champions = $this->ddragon->getChampions();
 
-        return $this->render('lol/champions/index.twig', [
+        /**
+         * @var $champions Champion[]
+         */
+        foreach ($champions as $c) {
+            $loading = substr_replace($c->getImage(), '', -4);
+            $loading  = str_replace(array( '\'', ' '), '', $loading) . '_0.jpg' ;
+            $c->setImage($loading);
+        }
+
+        return $this->render('lol/Champions/index.twig', [
             'champions' => $champions,
         ]);
     }
@@ -43,7 +53,7 @@ class ChampionsController extends AbstractController
     {
         $champion = $this->ddragon->getChampion($name);
 
-        return $this->render('lol/champions/view.twig', [
+        return $this->render('lol/Champions/view.twig', [
             'champion' => $champion,
         ]);
     }
