@@ -39,7 +39,7 @@ class ChampionsController extends AbstractController
             $c->setImage($loading);
         }
 
-        return $this->render('lol/champions/index.twig', [
+        return $this->render('lol/Champions/index.twig', [
             'champions' => $champions,
         ]);
     }
@@ -53,7 +53,7 @@ class ChampionsController extends AbstractController
     {
         $champion = $this->ddragon->getChampion($name);
 
-        return $this->render('lol/champions/view.twig', [
+        return $this->render('lol/Champions/view.twig', [
             'champion' => $champion,
         ]);
     }
