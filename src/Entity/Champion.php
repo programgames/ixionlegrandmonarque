@@ -47,6 +47,9 @@ class Champion
         $this->blurb = $data['blurb'];
         $this->title = $data['title'];
         $this->image = $data['image']['full'];
+        $loading = substr_replace($this->getImage(), '', -4);
+        $loading  = str_replace(array( '\'', ' '), '', $loading) . '_0.jpg' ;
+        $this->setImage($loading);
     }
 
     public function getId(): ?int

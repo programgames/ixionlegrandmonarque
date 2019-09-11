@@ -67,9 +67,10 @@ class DDragon implements APIType
     public function getChampion($name)
     {
         $url = LoLConstants::DDRAGON_URL_PREFIX.'cdn/'.$this->getCurrentPatch().LoLConstants::DDRAGON_DATA_FR.'/champion/'.$name.LoLConstants::DDRAGON_JSON;
+        $response = $this->lolRequestFormer->urlGetRequestToArray($url)->getData();
 
-        $response = $this->lolRequestFormer->urlGetRequestToArray($url);
-        $champion = new Champion($response);
+        $c = (array) $response['data'][$name];
+        $champion = new Champion($c);
 
         return $champion;
     }
