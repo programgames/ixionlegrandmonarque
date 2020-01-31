@@ -6,9 +6,3 @@ services:
 
     App\Controller\TeamMiamController:
         autowire: true;
-
-    App\LeagueOfLegends\TeamMiamManager:
-        autowire: true;
-
-    App\LoLDataGetter\ApiType\SummonerV4:
-        autowire: true;
